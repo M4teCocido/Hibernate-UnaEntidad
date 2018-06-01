@@ -1,12 +1,9 @@
 package funciones;
-
 import java.util.Calendar;
-
 import java.util.GregorianCalendar;
 import java.text.DateFormatSymbols;
 
 public class Funciones {
-	
 	public static boolean esBisiesto(int anio) {
 		return new GregorianCalendar().isLeapYear(anio);
 	}

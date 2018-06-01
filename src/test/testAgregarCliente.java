@@ -3,18 +3,21 @@ package test;
 import java.util.GregorianCalendar;
 import negocio.ClienteABM;
 
-public class testAgregarCliente {
+import org.hibernate.HibernateException;
 
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		String apellido = "Rincon";
-		String nombre = "Mariela";
-		int documento = 33295950;
-		GregorianCalendar fechaDeNacimiento = new GregorianCalendar(1987, 11, 18);
-		ClienteABM abm = new ClienteABM();
-		long ultimoCliente = abm.agregar(apellido, nombre, documento, fechaDeNacimiento);
+public class TestAgregarCliente {
+
+	public static void main(String[] args)throws HibernateException {
+		String apellido = "Hernandez";
+		String nombre = "Jorge";
+		int dni = 13597534;
+		GregorianCalendar fechaDeNacimiento = new GregorianCalendar(1984, 5, 06);
 		
-		System.out.println("Cliente dado de alta con id: " + ultimoCliente);
+		ClienteABM abm = new ClienteABM();
+		
+		long ultimoIdCliente = abm.agregar(apellido, nombre, dni, fechaDeNacimiento);
+		
+		System.out.println(ultimoIdCliente);	
 	}
 
 }

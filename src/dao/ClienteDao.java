@@ -11,14 +11,14 @@ public class ClienteDao {
 	private static Session session;
 	private Transaction tx;
 	
-	private void iniciaOperacion()throws HibernateException {
+	private void iniciaOperacion() throws HibernateException{
 		session = HibernateUtil.getSessionFactory().openSession();
 		tx = session.beginTransaction();
 	}
 	
-	private void manejaExcepcion(HibernateException he)throws HibernateException {
+	private void manejaExcepcion(HibernateException he) throws HibernateException {
 		tx.rollback();
-		throw new HibernateException("ERROR en la capa de acceso a datos: ", he);
+		throw new HibernateException("ERROR en la capa de acceso de datos: " + he);
 	}
 	
 	public int agregar(Cliente objeto) {
@@ -36,7 +36,7 @@ public class ClienteDao {
 		return id;
 	}
 	
-	public void actualizar(Cliente objeto)throws HibernateException {
+	public void actualizar(Cliente objeto) throws HibernateException {
 		try {
 			iniciaOperacion();
 			session.update(objeto);
@@ -49,7 +49,7 @@ public class ClienteDao {
 		}
 	}
 	
-	public void eliminar(Cliente objeto)throws HibernateException {
+	public void eliminar(Cliente objeto) throws HibernateException{
 		try {
 			iniciaOperacion();
 			session.delete(objeto);
@@ -62,18 +62,18 @@ public class ClienteDao {
 		}
 	}
 	
-	public Cliente traerCliente(long idCliente)throws HibernateException {
+	public Cliente traerCliente(long idCliente) throws HibernateException {
 		Cliente objeto = null;
 		try {
 			iniciaOperacion();
 			objeto = (Cliente) session.get(Cliente.class, idCliente);
-		}finally{
+		}finally {
 			session.close();
 		}
 		return objeto;
 	}
 	
-	public Cliente traerCliente(int dni)throws HibernateException {
+	public Cliente traerCliente(int dni) throws HibernateException{
 		Cliente objeto = null;
 		try {
 			iniciaOperacion();
@@ -84,18 +84,19 @@ public class ClienteDao {
 		return objeto;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")	
+	
 	public List<Cliente> traerCliente()throws HibernateException{
 		List<Cliente> lista = null;
 		try {
 			iniciaOperacion();
 			lista = session.createQuery("from Cliente c order by c.apellido asc c.nombre asc").list();
-		}catch(HibernateException he) {
-			manejaExcepcion(he);
-			throw he;
 		}finally {
 			session.close();
 		}
+		
 		return lista;
 	}
+	
+	
 }
