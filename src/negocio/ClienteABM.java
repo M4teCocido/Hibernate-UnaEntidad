@@ -29,19 +29,19 @@ public class ClienteABM {
 	}
 	
 	public void modificar(Cliente c) throws Exception {
-		if(dao.traerCliente(c.getDni()) != null) throw new Exception("Ya existe un cliente con DNI: " + c.getDni());
-		//if(dao.traerCliente(c.getIdCliente()) != null) throw new Exception("Ya existe un cliente con ID: " + c.getIdCliente());
+		Cliente cAux = dao.traerCliente(c.getDni());
+		if(cAux != null && cAux.getIdCliente() != c.getIdCliente()) throw new Exception("Ya existe un cliente con DNI: " + c.getDni());
 		dao.actualizar(c);
 	}
 	
-	public void eliminar(long idCliente) {
+	public void eliminar(long idCliente)throws Exception {
 		Cliente c = dao.traerCliente(idCliente);
+		if(c == null)throw new Exception("El cliente que quiere eliminar no existe. ID: " + idCliente);
 		dao.eliminar(c);
 	}
 	
 	public List<Cliente> traerCliente(){
 		return dao.traerCliente();
 	}
-	
 	
 }
