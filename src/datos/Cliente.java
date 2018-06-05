@@ -1,17 +1,19 @@
 package datos;
 
 import java.util.GregorianCalendar;
+import funciones.Funciones;
 
 public class Cliente {
 	private long idCliente;
-	private String nombre;
 	private String apellido;
+	private String nombre;
 	private int dni;
 	private GregorianCalendar fechaDeNacimiento;
 	private boolean baja;
 	
 	public Cliente() {}
-	public Cliente(String nombre, String apellido, int dni, GregorianCalendar fechaDeNacimiento) {
+	
+	public Cliente(String apellido, String nombre, int dni, GregorianCalendar fechaDeNacimiento) {
 		super();
 		this.apellido = apellido;
 		this.nombre = nombre;
@@ -28,14 +30,6 @@ public class Cliente {
 		this.idCliente = idCliente;
 	}
 	
-	public String getNombre() {
-		return nombre;
-	}
-	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
 	public String getApellido() {
 		return apellido;
 	}
@@ -44,8 +38,16 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public int getDni() {
-		return dni;
+		return this.dni;
 	}
 	
 	public void setDni(int dni) {
@@ -53,7 +55,7 @@ public class Cliente {
 	}
 	
 	public GregorianCalendar getFechaDeNacimiento() {
-		return fechaDeNacimiento;
+		return this.fechaDeNacimiento;
 	}
 	
 	public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
@@ -61,16 +63,14 @@ public class Cliente {
 	}
 	
 	public boolean isBaja() {
-		return baja;
+		return this.baja;
 	}
 	
 	public void setBaja(boolean baja) {
 		this.baja = baja;
 	}
-	@Override
-	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
-				+ ", fechaDeNacimiento=" + fechaDeNacimiento + ", baja=" + baja + "]";
-	}
 	
+	public String toString() {
+		return (idCliente + " " + apellido + " " + nombre + "DNI: " + dni + "F. de nacimiento: " + Funciones.traerFechaCorta(fechaDeNacimiento) + " " + baja);
+	}
 }

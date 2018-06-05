@@ -1,23 +1,23 @@
 package test;
 
-import negocio.ClienteABM;
 import datos.Cliente;
+import negocio.ClienteABM;
 
-public class testActualizarCliente {
+public class TestActualizarCliente {
 
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		ClienteABM abm = new ClienteABM();
+	public static void main(String[] args) throws Exception{
 		
-		long id = 1;
+		ClienteABM abm = new ClienteABM();
+		long id = 2;
 		
 		Cliente c = abm.traerCliente(id);
-		System.out.println("Cliente 'c' a modificar ----> " + c);
+		System.out.println("Cliente a modificar --> " + c);
+
 		c.setDni(31026186);
-		abm.modificar(c);
-		Cliente cModif = abm.traerCliente(31026186);
-		
-		System.out.println("Cliente 'c' modificado ----> " + cModif);
+		abm.modificar(c); 
+		int dni = 31026186;
+		Cliente cModif = abm.traerCliente(dni);
+		System.out.println("Cliente modificado --> " + cModif);
 	}
 
 }

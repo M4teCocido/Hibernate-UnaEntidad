@@ -9,6 +9,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class HibernateUtil {
 	
 	private static SessionFactory sessionFactory;
+	
 	public static SessionFactory getSessionFactory() {
 		try {
 			if(sessionFactory == null) {
@@ -20,9 +21,7 @@ public class HibernateUtil {
 			}
 		}catch(HibernateException he) {
 			System.err.println("ERROR en la inicializacion de la SessionFactory: " + he);
-			throw new ExceptionInInitializerError(he);
 		}
 		return sessionFactory;
 	}
-	
 }
