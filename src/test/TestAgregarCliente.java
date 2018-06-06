@@ -3,11 +3,9 @@ package test;
 import java.util.GregorianCalendar;
 import negocio.ClienteABM;
 
-import org.hibernate.HibernateException;
-
 public class TestAgregarCliente {
 
-	public static void main(String[] args)throws HibernateException {
+	public static void main(String[] args)throws Exception {
 		String apellido = "Hernandez";
 		String nombre = "Jorge";
 		int dni = 13597534;

@@ -6,7 +6,6 @@ import dao.HibernateUtil;
 
 public class testHBM {
 	public static void main(String[] args) throws Exception{
-		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 			
 		session.beginTransaction();

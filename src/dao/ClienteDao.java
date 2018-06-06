@@ -94,9 +94,6 @@ public class ClienteDao {
 		}finally {
 			session.close();
 		}
-		
 		return lista;
 	}
-	
-	
 }
