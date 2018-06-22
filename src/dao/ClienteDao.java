@@ -67,12 +67,8 @@ public class ClienteDao {
 		try {
 			iniciaOperacion();
 			objeto = (Cliente) session.get(Cliente.class, idCliente);
-<<<<<<< HEAD
 			tx.commit();
-		}finally{
-=======
 		}finally {
->>>>>>> 24f660ba5a1de797d65066505503b3f24002e99a
 			session.close();
 		}
 		return objeto;
@@ -97,13 +93,10 @@ public class ClienteDao {
 		try {
 			iniciaOperacion();
 			lista = session.createQuery("from Cliente c order by c.apellido asc c.nombre asc").list();
-<<<<<<< HEAD
 			tx.commit();
 		}catch(HibernateException he) {
 			manejaExcepcion(he);
 			throw he;
-=======
->>>>>>> 24f660ba5a1de797d65066505503b3f24002e99a
 		}finally {
 			session.close();
 		}
